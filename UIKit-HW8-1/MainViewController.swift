@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     private let contentArray = Content.data()
     
     lazy var layout = {
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         contentArray.count
     }
@@ -54,4 +54,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = DetailsViewController()
+        vc.setupPage(content: contentArray[indexPath.item])
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

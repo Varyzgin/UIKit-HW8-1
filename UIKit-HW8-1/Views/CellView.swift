@@ -45,7 +45,7 @@ class CellView: UICollectionViewCell {
         return $0
     }(UIStackView(frame: CGRect(x: Margins.medium.value(), y: imageView.frame.maxY + Margins.medium.value(), width: frame.width - 2 * Margins.medium.value(), height: 20)))
     
-    lazy var headerText = {
+    lazy var headerLabel = {
         $0.numberOfLines = 2
         $0.textAlignment = .left
         
@@ -67,8 +67,8 @@ class CellView: UICollectionViewCell {
         imageView.image = UIImage(named: content.picture)
         priceLabel.text = "\(content.price)"
         iconImageView.image = UIImage(named: "icon3")?.resize(width: 20, height: 20)
-        headerText.text = content.headerText
+        headerLabel.text = content.headerText
 
-        cardView.addSubviews(imageView, stackView, headerText, buyButton)
+        cardView.addSubviews(imageView, stackView, headerLabel, buyButton)
     }
 }
